@@ -75,7 +75,7 @@ find_PXaW_MK<-function(x,w,GenoProbXW){
 #'@param mafX the minor allele frequency of X (may be >0.5, corresponds to P(GenotypeX=1)
 #'@param V the estimate of the variance of X multipled by the expectation of the variance of Y
 #'@param freq Frequencies of SNP appearances (computed using snphap)
-#'@return The expected Z Score for SNP X, assuming the causal SNPs are W
+#'@return The estimated Z Score for SNP X, assuming the causal SNPs are W
 #'@author Mary Fortune
 est_statistic<-function(N0,N1,snps,W,gamma,freq,GenoProbList){
   #check that we have SNPs X and W in the reference dataset
