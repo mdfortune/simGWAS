@@ -1,4 +1,4 @@
-##' @title 
+##' @title Make simulated data which has N0 cases, N1 controls and is consitent with the causal model {W,gamma}
 ##' @param df dataset of genotypes to sample from (the control samples)
 ##' @param N0 number of samples with Y=0
 ##' @param N1 number of samples with Y=1

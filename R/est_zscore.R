@@ -4,8 +4,8 @@
 #'@export
 #'@param N0 The number of Y=0
 #'@param N1	The number of Y=1
-#'@param Ufactor
-#'@param powerfactor
+#'@param Ufactor	The constant factor used to compute the expectation of U
+#'@param powerfactor	The constant factor used to compute the expectation of the genotype of X to some power
 #'@param freq Frequencies of SNP appearances (computed using snphap)
 #'@param GenoProbXW
 #'@return The expected Z Score for SNP X, assuming the causal SNPs are W
@@ -69,12 +69,11 @@ find_PXaW_MK<-function(x,w,GenoProbXW){
 #'@export
 #'@param N0 The number of Y=0
 #'@param N1	The number of Y=1
-#'@param X	The SNP at which we wish to estimate a Z Score
-#'@param PYgW	P(Y=1 | W=w)
-#'@param Denom_cont	The contribution to the denominator, PW*PYgW
-#'@param mafX the minor allele frequency of X (may be >0.5, corresponds to P(GenotypeX=1)
-#'@param V the estimate of the variance of X multipled by the expectation of the variance of Y
+#'@param snps The snps at which we wish to compute the expected Z Score
+#'@param W	The true causal SNPs (these need not be in "snps")
+#'@param gamma	The odds ratios of effect of the true causal SNPs (including gamma0, the intercept term)
 #'@param freq Frequencies of SNP appearances (computed using snphap)
+#'@param GenoProbList
 #'@return The expected Z Score for SNP X, assuming the causal SNPs are W
 #'@author Mary Fortune
 est_statistic<-function(N0,N1,snps,W,gamma,freq,GenoProbList){
