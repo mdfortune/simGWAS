@@ -1,15 +1,15 @@
-#'Estimates the expected Z Score for a single SNP, assuming the input CVs, and the relationship, gamma, between them and the trait of interest
-#'Assumes we have already generated GenoProbXW for all X
-#'@title estimate Z score at a single SNP
-#'@export
-#'@param N0 The number of Y=0
-#'@param N1	The number of Y=1
-#'@param Ufactor	The constant factor used to compute the expectation of U
-#'@param powerfactor	The constant factor used to compute the expectation of the genotype of X to some power
-#'@param freq Frequencies of SNP appearances (computed using snphap)
-#'@param GenoProbXW
-#'@return The expected Z Score for SNP X, assuming the causal SNPs are W
-#'@author Mary Fortune
+##' Estimates the expected Z Score for a single SNP, assuming the input CVs, and the relationship, gamma, between them and the trait of interest
+##' Assumes we have already generated GenoProbXW for all X
+##' @title estimate Z score at a single SNP
+##' @export
+##' @param N0 The number of Y=0
+##' @param N1	The number of Y=1
+##' @param Ufactor	The constant factor used to compute the expectation of U
+##' @param powerfactor	The constant factor used to compute the expectation of the genotype of X to some power
+##' @param freq Frequencies of SNP appearances (computed using snphap)
+##' @param GenoProbXW An object giving the probability of seeing each {X,W} genotype vector
+##' @return The expected Z Score for SNP X, assuming the causal SNPs are W
+##' @author Mary Fortune
 est_zscore<-function(N0,N1,Ufactor,powerfactor,freq,GenoProbXW){
   #Compute U
   #####
@@ -65,17 +65,17 @@ find_PXaW_MK<-function(x,w,GenoProbXW){
 
 #wrapper function to run est_zscore for all snps in snps
 #assumes we have a list, GenoProbList, giving the GenoProb values for each X. 
-#'@title estimate Z score at a single SNP
-#'@export
-#'@param N0 The number of Y=0
-#'@param N1	The number of Y=1
-#'@param snps The snps at which we wish to compute the expected Z Score
-#'@param W	The true causal SNPs (these need not be in "snps")
-#'@param gamma	The odds ratios of effect of the true causal SNPs (including gamma0, the intercept term)
-#'@param freq Frequencies of SNP appearances (computed using snphap)
-#'@param GenoProbList
-#'@return The expected Z Score for SNP X, assuming the causal SNPs are W
-#'@author Mary Fortune
+##' @title estimate Z score at a single SNP
+##' @export
+##' @param N0 The number of Y=0
+##' @param N1	The number of Y=1
+##' @param snps The snps at which we wish to compute the expected Z Score
+##' @param W	The true causal SNPs (these need not be in "snps")
+##' @param gamma	The odds ratios of effect of the true causal SNPs (including gamma0, the intercept term)
+##' @param freq Frequencies of SNP appearances (computed using snphap)
+##' @param GenoProbList An list of objects giving the probability of seeing each {X,W} genotype vector
+##' @return The expected Z Score for SNP X, assuming the causal SNPs are W
+##' @author Mary Fortune
 est_statistic<-function(N0,N1,snps,W,gamma,freq,GenoProbList){
   #check that we have SNPs X and W in the reference dataset
   if (length(which(!(c(snps,W) %in% colnames(freq))))>0 ){stop("SNPs of interest not present in reference dataset.")}
