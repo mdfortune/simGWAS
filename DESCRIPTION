@@ -5,7 +5,7 @@ Depends:
     combinat,
     corpcor,
     mvtnorm,
-biocViews : snpStats
+biocViews: snpStats
 Title: Simulating the expected output from a GWAS with a given causal model.
 Version: 2.1
 Date: 2013-05-22
