@@ -18,12 +18,12 @@ Description: Simulating the expected output from a GWAS with a given causal
 License: GPL
 LazyLoad: yes
 Collate:
+    'simGWAS.R'
     'compute_gamma0.R'
     'est_zscore.R'
     'extractsnps.R'
     'make_dataset.R'
     'make_GenoProbList.R'
-    'simGWAS.R'
 LinkingTo: Rcpp
 Imports:
     Rcpp
