@@ -1,0 +1,25 @@
+Package: simGWAS
+Type: Package
+Depends:
+	dplyr,
+	combinat,
+	corpcor,
+	mvtnorm,
+	snpStats
+Title: Simulating the expected output from a GWAS with a given causal model.
+Version: 2.1
+Date: 2013-05-22
+Authors@R: c(person("Mary", "Fortune", role=c("aut","cre"), email =
+    "mdf34@cam.ac.uk"))
+Author: Mary Fortune
+Maintainer: Mary Fortune <mdf34@cam.ac.uk>
+Description:  Simulating the expected output from a GWAS with a given causal model.
+License: GPL
+LazyLoad: yes
+Collate:
+    'compute_gamma_0.R'
+    'est_zscore.R'
+    'extractsnps.R'
+    'make_dataset.R'
+    'make_GenoProbList.R'
+    'simGWAS.R'
