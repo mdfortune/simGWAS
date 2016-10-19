@@ -1,3 +1,9 @@
+#' @useDynLib simGWAS
+#' @importFrom Rcpp sourceCpp
+
+Sys.setenv("PKG_CXXFLAGS"="-fopenmp")
+Sys.setenv("PKG_LIBS"="-fopenmp")
+
 ##' @title Compute expected Z Score
 ##' @export
 ##' @param N0 The number of Y=0

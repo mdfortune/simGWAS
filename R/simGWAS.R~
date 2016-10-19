@@ -1,3 +1,6 @@
+#' @useDynLib simGWAS
+#' @importFrom Rcpp sourceCpp
+
 ##' @title Compute expected Z Score
 ##' @export
 ##' @param N0 The number of Y=0
@@ -33,4 +36,5 @@ simulated_z_score<-function(N0,N1,snps,W,gamma.CV,freq,df_control){
 	LD <- snpStats::ld(XX,XX,stat="R",symmetric=TRUE)
 	LD<-as.matrix(make.positive.definite(LD))
 	sim_z_score<-c(rmvnorm(n=1,mean=exp_z_score,sigma=LD))
+	return(sim_z_score)
 }
