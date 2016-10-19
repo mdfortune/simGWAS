@@ -24,6 +24,7 @@ Collate:
     'extractsnps.R'
     'make_dataset.R'
     'make_GenoProbList.R'
+	'RcppExports.R'
 LinkingTo: Rcpp
 Imports:
     Rcpp
