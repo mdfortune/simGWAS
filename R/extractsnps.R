@@ -1,6 +1,3 @@
-library(dplyr)
-
-
 ##' @title computes a matrix telling us which haplotype pairs correspond to which genotypes
 ##' @author Mary Fortune
 which_genotypes<-function(nsnps){

@@ -1,3 +1,8 @@
+Sys.setenv("PKG_CXXFLAGS"="-fopenmp")
+Sys.setenv("PKG_LIBS"="-fopenmp")
+
+Rcpp::sourceCpp('/home/mdf34/simgwas_package/test_prop.cpp')
+Rcpp::sourceCpp('/home/mdf34/simgwas_package/algebra.cpp')
 vals_1SNP<-expand.grid(1:2)
 vals_2SNP<-expand.grid(1:2,1:2)
 vals_3SNP<-expand.grid(1:2,1:2,1:2)
