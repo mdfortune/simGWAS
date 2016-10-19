@@ -17,7 +17,7 @@ Description:  Simulating the expected output from a GWAS with a given causal mod
 License: GPL
 LazyLoad: yes
 Collate:
-    'compute_gamma0.R'
+    'compute_gamma_0.R'
     'est_zscore.R'
     'extractsnps.R'
     'make_dataset.R'
