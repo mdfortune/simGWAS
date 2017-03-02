@@ -15,21 +15,19 @@ which_X1_3SNP<-which(geno_3SNP[,1]==1)
 which_X2_3SNP<-which(geno_3SNP[,1]==2)
 
 
-fastmake_GenoProbList<-function(snps,W,freq){
+
+
+
+##' @title compute a list, GenoProbList, giving the GenoProb values for each X. 
+##' @export
+##' @param snps The snps at which we wish to compute the expected Z Score
+##' @param W	The true causal SNPs (these need not be in "snps")
+##' @param freq Frequencies of SNP appearances (computed using snphap)
+##' @return The the GenoProb values for each X
+##' @author Mary Fortune and Chris Wallace
+make_GenoProbList<-function(snps,W,freq){
     lapply(snps, fastextractsnps, W=W,freq=freq)## hapmap=freqmat,freqprob=freqprob)
 }
-make_GenoProbList<-function(snps,W,freq){
-	## nsnps<-length(snps)
-	## m<-length(W)
-	lapply(snps, extractsnps, W=W,freq=freq)
-        ## vector("list", nsnps) 
-	## for (ii in 1:nsnps){
-	## 	X<-snps[ii]
-	## 	GenoProbList[[ii]]<-extractsnps(X,W,freq)
-	## }	
-	## return(GenoProbList)
-}
-
 
 make_GenoProbList_Wsize1<-function(snps,W,freq){
 	# A specific function to make the GenoProbList when W has size 1

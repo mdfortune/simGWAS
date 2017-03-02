@@ -1,4 +1,4 @@
-##' @title 
+##' @title Simulate a dataset given a set of controls (without phenotype) and a causal model
 ##' @param df control dataset of genotypes to sample from, without phenotype
 ##' @param N0 number of samples with Y=0
 ##' @param N1 number of samples with Y=1
@@ -38,7 +38,7 @@ make_dataset<-function(df,N0,N1,CV,PWgY0,PWgY1){
 	return(list(dfnew,c(rows.index0,rows.index1)))
 }
 
-##' @title 
+##' @title Simulate a dataset given a set of controls (with phenotype) and a causal model
 ##' @param df dataset of genotypes to sample from, with phenotype
 ##' @param N0 number of samples with Y=0
 ##' @param N1 number of samples with Y=1
