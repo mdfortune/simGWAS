@@ -15,15 +15,19 @@ which_X1_3SNP<-which(geno_3SNP[,1]==1)
 which_X2_3SNP<-which(geno_3SNP[,1]==2)
 
 
+fastmake_GenoProbList<-function(snps,W,freq){
+    lapply(snps, fastextractsnps, W=W,freq=freq)## hapmap=freqmat,freqprob=freqprob)
+}
 make_GenoProbList<-function(snps,W,freq){
-	nsnps<-length(snps)
-	m<-length(W)
-	GenoProbList<-vector("list", nsnps) 
-	for (ii in 1:nsnps){
-		X<-snps[ii]
-		GenoProbList[[ii]]<-extractsnps(X,W,freq)
-	}	
-	return(GenoProbList)
+	## nsnps<-length(snps)
+	## m<-length(W)
+	lapply(snps, extractsnps, W=W,freq=freq)
+        ## vector("list", nsnps) 
+	## for (ii in 1:nsnps){
+	## 	X<-snps[ii]
+	## 	GenoProbList[[ii]]<-extractsnps(X,W,freq)
+	## }	
+	## return(GenoProbList)
 }
 
 

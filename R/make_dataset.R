@@ -8,6 +8,7 @@
 ##' @return simulated genotype data for N0 controls and N1 cases
 ##' @author Mary Fortune
 make_dataset<-function(df,N0,N1,CV,PWgY0,PWgY1){
+    m <- length(CV)
 	#make sure we have genotypes in {0,1,2}
 	if (isTRUE(all.equal(sort(unique(df[,2])),1:3))){
 		df[,-1]<-df[,-1]-1
