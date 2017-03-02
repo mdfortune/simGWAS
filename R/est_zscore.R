@@ -47,8 +47,16 @@ est_zscore<-function(N0,N1,Ufactor,powerfactor,freq,GenoProbXW){
   Z<-U*EinvsqrtVX*(N/(N0*N1))^0.5
   return(Z)
 }
-
-
+fast_zscore<-function(N0,N1,Ufactor,powerfactor,freq,GenoProbXW){
+    ## uses Rcpp file ../src/est_zscore.cpp
+  N<-N0+N1
+  #Contribution of each W=w to the Sum
+  #P(X=1 AND W=w)
+  PX1W<-GenoProbXW[[2]]
+  #P(X=2 AND W=w)
+  PX2W<-GenoProbXW[[3]]
+    zscore(N0,N1,Ufactor,powerfactor,PX1W,PX2W)
+}
 
 
 #returns P(X=x, W=w)
@@ -90,4 +98,23 @@ est_statistic<-function(N0,N1,snps,W,gamma,freq,GenoProbList){
     Est_stat[ii]<-est_zscore(N0,N1,Ufactor,powerfactor,freq,GenoProbList[[ii]])
   }
   return(Est_stat)
+}
+fast_statistic<-function(N0,N1,snps,W,gamma1,freq,GenoProbList){
+                                        #check that we have SNPs X and W in the reference dataset
+    if (!all(c(snps,W) %in% colnames(freq)))
+        stop("SNPs of interest not present in reference dataset.")
+    if(length(gamma1)!=length(W))
+        stop("length mismatch: gamma1 and W")
+    if(length(GenoProbList)!=length(snps))
+        stop("GenoProbList should have same length and order as snps")
+    g0 <- compute_gamma0(N0=N0,N1=N1,W=W,gamma.CV=gamma1,freq=freq)
+    ## compute P(Y=1 | W=w)
+    N<-N0+N1
+    expeta<-exp(g0+rowSums(sweep((hcube(rep(3,length(W)))-1),MARGIN=2,gamma1,`*`)))
+                                        #compute the constant factors we will multiply by
+    Ufactor<-N0*(N-1)*(N0*expeta-N1)/(N^2)
+    powerfactor<-N0*(expeta+1)/N
+    sapply(seq_along(snps), function(ii) {
+        fast_zscore(N0,N1,Ufactor,powerfactor,freq,GenoProbList[[ii]])
+    })
 }
