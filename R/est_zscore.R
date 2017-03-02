@@ -47,7 +47,6 @@ est_zscore<-function(N0,N1,Ufactor,powerfactor,freq,GenoProbXW){
   Z<-U*EinvsqrtVX*(N/(N0*N1))^0.5
   return(Z)
 }
-
 fast_zscore<-function(N0,N1,Ufactor,powerfactor,freq,GenoProbXW){
     ## uses Rcpp file ../src/est_zscore.cpp
   N<-N0+N1
@@ -99,4 +98,18 @@ est_statistic<-function(N0,N1,snps,W,gamma,freq,GenoProbList){
     Est_stat[ii]<-est_zscore(N0,N1,Ufactor,powerfactor,freq,GenoProbList[[ii]])
   }
   return(Est_stat)
+}
+fast_statistic<-function(N0,N1,snps,W,gamma,freq,GenoProbList){
+                                        #check that we have SNPs X and W in the reference dataset
+    if (!all(c(snps,W) %in% colnames(freq)))
+        stop("SNPs of interest not present in reference dataset.")
+                                        # compute P(Y=1 | W=w)
+    N<-N0+N1
+    expeta<-exp(gamma[1]+rowSums(sweep((hcube(rep(3,length(W)))-1),MARGIN=2,gamma[-1],`*`)))
+                                        #compute the constant factors we will multiply by
+    Ufactor<-N0*(N-1)*(N0*expeta-N1)/(N^2)
+    powerfactor<-N0*(expeta+1)/N
+    sapply(seq_along(snps), function(ii) {
+        fast_zscore(N0,N1,Ufactor,powerfactor,freq,GenoProbList[[ii]])
+    })
 }
