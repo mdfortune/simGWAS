@@ -27,6 +27,6 @@ Estimates the expected Z Score for a single SNP, assuming the input CVs, and the
 Assumes we have already generated GenoProbXW for all X
 }
 \author{
-Mary Fortune
+Mary Fortune and Chris Wallace
 }
 

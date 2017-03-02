@@ -3,6 +3,7 @@
 export(est_statistic)
 export(est_zscore)
 export(expected_z_score)
+export(make_GenoProbList)
 export(simulated_z_score)
 importFrom(Rcpp,sourceCpp)
 useDynLib(simGWAS)

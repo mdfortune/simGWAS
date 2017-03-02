@@ -18,8 +18,6 @@ make_dataset(df, N0, N1, CV, PWgY0, PWgY1)
 \item{PWgY0}{the distribution of causal snps in controls}
 
 \item{PWgY1}{the distribution of causal snps in cases}
-
-\item{gamma}{the coefficients}
 }
 \value{
 simulated genotype data for N0 controls and N1 cases

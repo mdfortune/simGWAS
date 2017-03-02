@@ -1,4 +1,5 @@
 ##' @title computes a matrix telling us which haplotype pairs correspond to which genotypes
+##' @param nsnps The number of SNPs
 ##' @author Mary Fortune
 which_genotypes<-function(nsnps){
 	if (nsnps<2){return(0)}

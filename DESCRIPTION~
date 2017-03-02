@@ -1,17 +1,17 @@
 Package: simGWAS
 Type: Package
-Depends:
+Imports:
     dplyr,
     combinat,
     corpcor,
     mvtnorm,
     snpStats
 biocViews: snpStats
-Title: Simulating the expected output from a GWAS with a given causal model.
+Title: Simulating the expected output from a GWAS with a given causal model
 Version: 3.2.3
 Date: 2016-09-16
 Authors@R: c(person("Mary", "Fortune", role=c("aut","cre"), email =
-    "mdf34@cam.ac.uk"))
+    "mdf34@cam.ac.uk"), person("Marcus", "Klarqvist", role=c("ctb")))
 Author: Mary Fortune
 Maintainer: Mary Fortune <mdf34@cam.ac.uk>
 Description: Simulating the expected output from a GWAS with a given causal

@@ -6,6 +6,9 @@
 \usage{
 which_genotypes(nsnps)
 }
+\arguments{
+\item{nsnps}{The number of SNPs}
+}
 \author{
 Mary Fortune
 }

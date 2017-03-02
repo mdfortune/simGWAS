@@ -9,7 +9,7 @@
 ##' @param freq Frequencies of SNP appearances (computed using snphap)
 ##' @param GenoProbXW An object giving the probability of seeing each {X,W} genotype vector
 ##' @return The expected Z Score for SNP X, assuming the causal SNPs are W
-##' @author Mary Fortune
+##' @author Mary Fortune and Chris Wallace
 est_zscore<-function(N0,N1,Ufactor,powerfactor,freq,GenoProbXW){
     ## uses Rcpp file ../src/est_zscore.cpp
   N<-N0+N1
@@ -46,7 +46,7 @@ find_PXaW_MK<-function(x,w,GenoProbXW){
 ##' @param freq Frequencies of SNP appearances (computed using snphap)
 ##' @param GenoProbList An list of objects giving the probability of seeing each {X,W} genotype vector
 ##' @return The expected Z Score for SNP X, assuming the causal SNPs are W
-##' @author Mary Fortune
+##' @author Mary Fortune and Chris Wallace
 est_statistic<-function(N0,N1,snps,W,gamma1,freq,GenoProbList){
                                         #check that we have SNPs X and W in the reference dataset
     if (!all(c(snps,W) %in% colnames(freq)))

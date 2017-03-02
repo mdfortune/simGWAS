@@ -1,6 +1,3 @@
-library(dplyr)
-
-
 ##' @title computes a matrix telling us which haplotype pairs correspond to which genotypes
 ##' @author Mary Fortune
 which_genotypes<-function(nsnps){
@@ -20,7 +17,7 @@ which_genotypes<-function(nsnps){
 	return(geno_matrix)
 }
 
-
+## objects which are used multiple times should be created once and stored
 geno_matrix_2snps<-which_genotypes(2)
 geno_matrix_3snps<-which_genotypes(3)
 geno_matrix_4snps<-which_genotypes(4)
@@ -56,11 +53,81 @@ which_X2_6SNP<-which(geno_6SNP[,1]==2)
 
 
 
+fastextractsnps<-function(X,W,freq){
+## uses Rcpp file ../src/happrobs.cpp
+	if (X %in% W){
+		snp.int<-W
+	} else {
+		snp.int<-c(X,W)
+	}	
+	nsnps<-length(snp.int)
+                                        #the haplotypes for our snps of interest
+        freqmat <- as.matrix(freq[,snp.int]-1)
+        freqprob <- freq$Probability
+
+        hp <- happrobs(freqmat,freqprob)
+        ## haptype<-summarise(group_by_(freq,.dots=snp.int),totalProb=sum(Probability))
+	#get the genotype matrix
+	if (nsnps==1){
+		return(list(c(hp[1]^2,0,0),c(0,2*hp[1]*hp[2],0),c(0,0,hp[2]^2)))
+	}
+	else if (nsnps==2){
+            genotype<-MatrixVector(geno_matrix_2snps,c(hp%*%t(hp)),verbose=F)
+            ## genotype<-extractsnps_2snps(haptype)
+		if (X %in% W){
+                    whichX<-which(W==X)
+                    return(list(genotype*as.integer(geno_2SNP[,whichX]==0),genotype*as.integer(geno_2SNP[,whichX]==1),genotype*as.integer(geno_2SNP[,whichX]==2)))
+		}else{
+                    return(list(genotype[which_X0_2SNP],genotype[which_X1_2SNP],genotype[which_X2_2SNP]))
+		}
+	}else if (nsnps==3){	
+            genotype<-MatrixVector(geno_matrix_3snps,c(hp%*%t(hp)),verbose=F)
+		## genotype<-extractsnps_3snps(haptype)
+		if (X %in% W){
+			whichX<-which(W==X)
+			return(list(genotype*as.integer(geno_3SNP[,whichX]==0),genotype*as.integer(geno_3SNP[,whichX]==1),genotype*as.integer(geno_3SNP[,whichX]==2)))
+		}else{
+			return(list(genotype[which_X0_3SNP],genotype[which_X1_3SNP],genotype[which_X2_3SNP]))
+		}
+	}else if (nsnps==4){	
+            genotype<-MatrixVector(geno_matrix_4snps,c(hp%*%t(hp)),verbose=F)
+            ## genotype<-extractsnps_4snps(haptype)
+		if (X %in% W){
+			whichX<-which(W==X)
+			return(list(genotype*as.integer(geno_4SNP[,whichX]==0),genotype*as.integer(geno_4SNP[,whichX]==1),genotype*as.integer(geno_4SNP[,whichX]==2)))
+		}else{
+			return(list(genotype[which_X0_4SNP],genotype[which_X1_4SNP],genotype[which_X2_4SNP]))
+		}
+	}else if (nsnps==5){	
+            genotype<-MatrixVector(geno_matrix_5snps,c(hp%*%t(hp)),verbose=F)
+                    ## genotype<-extractsnps_5snps(haptype)
+		if (X %in% W){
+			whichX<-which(W==X)
+			return(list(genotype*as.integer(geno_5SNP[,whichX]==0),genotype*as.integer(geno_5SNP[,whichX]==1),genotype*as.integer(geno_5SNP[,whichX]==2)))
+		}else{
+			return(list(genotype[which_X0_5SNP],genotype[which_X1_5SNP],genotype[which_X2_5SNP]))
+		}
+	}else if (nsnps==6){	
+            genotype<-MatrixVector(geno_matrix_6snps,c(hp%*%t(hp)),verbose=F)
+            ## genotype<-extractsnps_6snps(haptype)
+		if (X %in% W){
+			whichX<-which(W==X)
+			return(list(genotype*as.integer(geno_6SNP[,whichX]==0),genotype*as.integer(geno_6SNP[,whichX]==1),genotype*as.integer(geno_6SNP[,whichX]==2)))
+		}else{
+			return(list(genotype[which_X0_6SNP],genotype[which_X1_6SNP],genotype[which_X2_6SNP]))
+		}
+	}else{
+		stop("Causal model has too many SNPs")
+	}
+	#output the relevant portions of the probability column
+	
+}
+
 
 extractsnps<-function(X,W,freq){
 	if (X %in% W){
 		snp.int<-W
-	}else{
+	} else {
 		snp.int<-c(X,W)
 	}	
 	nsnps<-length(snp.int)
