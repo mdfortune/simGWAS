@@ -69,7 +69,7 @@ fastextractsnps<-function(X,W,freq){
         ## haptype<-summarise(group_by_(freq,.dots=snp.int),totalProb=sum(Probability))
 	#get the genotype matrix
 	if (nsnps==1){
-		return(list(c(hp[1]^2,0,0),c(0,2*hp[1]*haptype$hp[2],0),c(0,0,hp[2]^2)))
+		return(list(c(hp[1]^2,0,0),c(0,2*hp[1]*hp[2],0),c(0,0,hp[2]^2)))
 	}
 	else if (nsnps==2){
             genotype<-MatrixVector(geno_matrix_2snps,c(hp%*%t(hp)),verbose=F)
