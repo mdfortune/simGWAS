@@ -55,15 +55,15 @@ library(combinat)
 library(devtools)
 load_all("~/RP/simGWAS")
 nsnps <- 100
-nhaps <- 1000
-maf <- runif(nsnps+1,0.1,0.5)
-haps <- do.call("cbind", lapply(maf, function(f) rbinom(nhaps,1,f)))
-r <- cor(haps)
-summary(r[upper.tri(r)])
 ## add some autocorrelation
-haps <- pmin(haps[,1:nsnps]+haps[,-1],1)
-r <- cor(haps)
-summary(r[upper.tri(r)])
+lag <- 3
+nhaps <- 1000
+maf <- runif(nsnps+lag,0.1,0.5)
+laghaps <- do.call("cbind", lapply(maf, function(f) rbinom(nhaps,1,f)))
+haps <- laghaps[,1:nsnps]
+for(j in 1:lag) 
+    haps <- haps + laghaps[,(1:nsnps)+j]
+haps <- round(haps/(lag+1))
 
 snps <- colnames(haps) <- paste0("s",1:nsnps)
 freq <- as.data.frame(haps+1)
