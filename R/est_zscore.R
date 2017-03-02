@@ -99,13 +99,18 @@ est_statistic<-function(N0,N1,snps,W,gamma,freq,GenoProbList){
   }
   return(Est_stat)
 }
-fast_statistic<-function(N0,N1,snps,W,gamma,freq,GenoProbList){
+fast_statistic<-function(N0,N1,snps,W,gamma1,freq,GenoProbList){
                                         #check that we have SNPs X and W in the reference dataset
     if (!all(c(snps,W) %in% colnames(freq)))
         stop("SNPs of interest not present in reference dataset.")
-                                        # compute P(Y=1 | W=w)
+    if(length(gamma1)!=length(W))
+        stop("length mismatch: gamma1 and W")
+    if(length(GenoProbList)!=length(snps))
+        stop("GenoProbList should have same length and order as snps")
+    g0 <- compute_gamma0(N0=N0,N1=N1,W=W,gamma.CV=gamma1,freq=freq)
+    ## compute P(Y=1 | W=w)
     N<-N0+N1
-    expeta<-exp(gamma[1]+rowSums(sweep((hcube(rep(3,length(W)))-1),MARGIN=2,gamma[-1],`*`)))
+    expeta<-exp(g0+rowSums(sweep((hcube(rep(3,length(W)))-1),MARGIN=2,gamma1,`*`)))
                                         #compute the constant factors we will multiply by
     Ufactor<-N0*(N-1)*(N0*expeta-N1)/(N^2)
     powerfactor<-N0*(expeta+1)/N
