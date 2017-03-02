@@ -49,7 +49,7 @@ est_zscore<-function(N0,N1,Ufactor,powerfactor,freq,GenoProbXW){
 }
 
 fast_zscore<-function(N0,N1,Ufactor,powerfactor,freq,GenoProbXW){
-#####
+    ## uses Rcpp file ../src/est_zscore.cpp
   N<-N0+N1
   #Contribution of each W=w to the Sum
   #P(X=1 AND W=w)
@@ -58,8 +58,6 @@ fast_zscore<-function(N0,N1,Ufactor,powerfactor,freq,GenoProbXW){
   PX2W<-GenoProbXW[[3]]
     zscore(N0,N1,Ufactor,powerfactor,PX1W,PX2W)
 }
-
-
 
 
 #returns P(X=x, W=w)

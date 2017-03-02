@@ -46,6 +46,29 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// haplabs
+std::vector< std::string > haplabs(const int n);
+RcppExport SEXP simGWAS_haplabs(SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(haplabs(n));
+    return rcpp_result_gen;
+END_RCPP
+}
+// happrobs
+NumericVector happrobs(const NumericMatrix& G, const NumericVector& P);
+RcppExport SEXP simGWAS_happrobs(SEXP GSEXP, SEXP PSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericMatrix& >::type G(GSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type P(PSEXP);
+    rcpp_result_gen = Rcpp::wrap(happrobs(G, P));
+    return rcpp_result_gen;
+END_RCPP
+}
 // meanC
 double meanC(NumericVector x);
 RcppExport SEXP simGWAS_meanC(SEXP xSEXP) {

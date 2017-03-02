@@ -13,6 +13,14 @@ psum <- function(x, y) {
     .Call('simGWAS_psum', PACKAGE = 'simGWAS', x, y)
 }
 
+haplabs <- function(n) {
+    .Call('simGWAS_haplabs', PACKAGE = 'simGWAS', n)
+}
+
+happrobs <- function(G, P) {
+    .Call('simGWAS_happrobs', PACKAGE = 'simGWAS', G, P)
+}
+
 meanC <- function(x) {
     .Call('simGWAS_meanC', PACKAGE = 'simGWAS', x)
 }
