@@ -1,4 +1,5 @@
 ##' @title Simulate a dataset given a set of controls (without phenotype) and a causal model
+##' @export
 ##' @param df control dataset of genotypes to sample from, without phenotype
 ##' @param N0 number of samples with Y=0
 ##' @param N1 number of samples with Y=1

@@ -5,7 +5,6 @@
 ##' @param CV which SNPs are causal?
 ##' @param PWgY0 the distribution of causal snps in controls
 ##' @param PWgY1 the distribution of causal snps in cases
-##' @param gamma the coefficients
 ##' @return simulated genotype data for N0 controls and N1 cases
 ##' @author Mary Fortune
 make_dataset<-function(df,N0,N1,CV,PWgY0,PWgY1){
@@ -45,7 +44,6 @@ make_dataset<-function(df,N0,N1,CV,PWgY0,PWgY1){
 ##' @param CV which SNPs are causal?
 ##' @param PWgY0 the distribution of causal snps in controls
 ##' @param PWgY1 the distribution of causal snps in cases
-##' @param gamma the coefficients
 ##' @return simulated genotype data for N0 controls and N1 cases
 ##' @author Mary Fortune
 make_dataset_pheno<-function(df,N0,N1,CV,PWgY0,PWgY1){
