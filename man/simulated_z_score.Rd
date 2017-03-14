@@ -24,4 +24,3 @@ simulated_z_score(N0, N1, snps, W, gamma.CV, freq, df_control)
 \author{
 Mary Fortune
 }
-

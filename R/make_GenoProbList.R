@@ -23,6 +23,7 @@ which_X2_3SNP<-which(geno_3SNP[,1]==2)
 ##' @param snps The snps at which we wish to compute the expected Z Score
 ##' @param W	The true causal SNPs (these need not be in "snps")
 ##' @param freq Frequencies of SNP appearances (computed using snphap)
+##' @export
 ##' @return The the GenoProb values for each X
 ##' @author Mary Fortune and Chris Wallace
 make_GenoProbList<-function(snps,W,freq){

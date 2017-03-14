@@ -25,4 +25,3 @@ simulated genotype data for N0 controls and N1 cases
 \author{
 Mary Fortune
 }
-

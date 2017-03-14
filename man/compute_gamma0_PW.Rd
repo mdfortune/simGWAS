@@ -23,4 +23,3 @@ The value of gamma0
 \author{
 Mary Fortune
 }
-

@@ -69,6 +69,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// meanC
+double meanC(NumericVector x);
+RcppExport SEXP simGWAS_meanC(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(meanC(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 // combinationRefs
 NumericMatrix combinationRefs(const IntegerMatrix& x, const IntegerMatrix& cols, const IntegerMatrix& reference, const NumericVector& prop, int shiftSize, int threads, bool verbose);
 RcppExport SEXP simGWAS_combinationRefs(SEXP xSEXP, SEXP colsSEXP, SEXP referenceSEXP, SEXP propSEXP, SEXP shiftSizeSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {

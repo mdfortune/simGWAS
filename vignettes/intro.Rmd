@@ -1,0 +1,113 @@
+---
+title: "Simulating GWAS data, a walkthrough"
+author: "Chris Wallace"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Simulating GWAS data, a walkthrough}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+<!-- Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format: -->
+
+<!-- - Never uses retina figures -->
+<!-- - Has a smaller default figure size -->
+<!-- - Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style -->
+
+## 
+
+Load the library
+
+```{r}
+library(simGWAS)
+```
+
+simGWAS needs some reference haplotype frequencies from control subjcets.  These can be found by taking phased haplotypes from public data sources, or by phasing genotype data you may already have, for example using [snphap](https://github.com/chr1swallace/snphap).
+
+For the purpose of this vignette, we will simulate some reference haplotypes.  The final format is a `data.frame` with n columns of 0s and 1s indicating alleles at each of n SNPs, and collections of alleles in a row being a haplotype.  A final column, named "Probability", contains the fractional frequency of each haplotype.  Note that haplotypes need not be unique, you can have one row per haplotype in a sample, and Probability set to 1/[number of haplotypes] = 1/(2*[number of samples]).  The object we are creating will be called `freq`.
+
+```{r}
+nsnps <- 100
+nhaps <- 1000
+lag <- 5 # genotypes are correlated between neighbouring variants
+maf <- runif(nsnps+lag,0.05,0.5) # common SNPs
+laghaps <- do.call("cbind", lapply(maf, function(f) rbinom(nhaps,1,f)))
+haps <- laghaps[,1:nsnps]
+for(j in 1:lag) 
+    haps <- haps + laghaps[,(1:nsnps)+j]
+haps <- round(haps/(lag+1))
+
+snps <- colnames(haps) <- paste0("s",1:nsnps)
+freq <- as.data.frame(haps+1)
+freq$Probability <- 1/nrow(freq)
+sum(freq$Probability)
+```
+
+Next, we need to specify the causal variants, and their effects on disease, as odds ratios.  We create a vector `CV` with snp names that are a subset of column names in `freq` and a vector of odds ratios.  In our simulated data, we pick two causal variants at random, with odds ratios of 1.4 and 1.2.
+
+```{r}
+CV=sample(snps,2)
+g1 <- c(1.4,1.2)
+```
+
+Now we simulate the results of a GWAS.  There are two key functions, `makeGenoProbList` calculates genotype probabilities at each SNP conditional on genotypes at the causal variants, then `est_statistic` generates the vector of Z scores across all SNPs, conditional on the causal variants *and* their odds ratios.
+
+```{r}
+FP <- make_GenoProbList(snps=snps,W=CV,freq=freq)
+z <- est_statistic(N0=3000, # number of controls
+              N1=2000, # number of cases
+              snps=snps, # column names in freq of SNPs for which Z scores should be generated
+              W=CV, # causal variants, subset of snps
+              gamma1=g1, # odds ratios
+              freq=freq, # reference haplotypes
+              GenoProbList=FP) # FP above
+```
+
+Ignoring spacing, this would produce results like, with red lines indicating where the causal variants are.
+
+```{r}
+plot(1:nsnps,z); abline(v=which(snps %in% CV),col="red"); abline(h=0)
+```
+
+<!-- ## Vignette Info -->
+
+<!-- Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette. -->
+
+<!-- ## Styles -->
+
+<!-- The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows: -->
+
+<!--     output:  -->
+<!--       rmarkdown::html_vignette: -->
+<!--         css: mystyles.css -->
+
+<!-- ## Figures -->
+
+<!-- The figure sizes have been customised so that you can easily put two images side-by-side.  -->
+
+<!-- ```{r, fig.show='hold'} -->
+<!-- plot(1:10) -->
+<!-- plot(10:1) -->
+<!-- ``` -->
+
+<!-- You can enable figure captions by `fig_caption: yes` in YAML: -->
+
+<!--     output: -->
+<!--       rmarkdown::html_vignette: -->
+<!--         fig_caption: yes -->
+
+<!-- Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**. -->
+
+<!-- ## More Examples -->
+
+<!-- You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`. -->
+
+<!-- ```{r, echo=FALSE, results='asis'} -->
+<!-- knitr::kable(head(mtcars, 10)) -->
+<!-- ``` -->
+
+<!-- Also a quote using `>`: -->
+
+<!-- > "He who gives up [code] safety for [code] speed deserves neither." -->
+<!-- ([via](https://twitter.com/hadleywickham/status/504368538874703872)) -->

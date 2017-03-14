@@ -27,4 +27,3 @@ The expected Z Score for SNP X, assuming the causal SNPs are W
 \author{
 Mary Fortune and Chris Wallace
 }
-
