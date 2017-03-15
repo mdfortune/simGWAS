@@ -42,7 +42,7 @@ find_PXaW_MK<-function(x,w,GenoProbXW){
 ##' @param N1	The number of Y=1
 ##' @param snps The snps at which we wish to compute the expected Z Score
 ##' @param W	The true causal SNPs (these need not be in "snps")
-##' @param gamma1	The odds ratios of effect of the true causal SNPs (not including gamma0, the intercept term)
+##' @param gamma1	The log odds ratios of effect of the true causal SNPs (not including gamma0, the intercept term)
 ##' @param freq Frequencies of SNP appearances (computed using snphap)
 ##' @param GenoProbList An list of objects giving the probability of seeing each {X,W} genotype vector
 ##' @return The expected Z Score for SNP X, assuming the causal SNPs are W

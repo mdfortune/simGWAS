@@ -2,7 +2,7 @@
 ##' @param N0 number of samples with Y=0
 ##' @param N1 number of samples with Y=1
 ##' @param W The causal SNPs
-##' @param gamma.CV The odds ratios of effect for each CV
+##' @param gamma.CV The log odds ratios of effect for each CV
 ##' @param freq Frequencies of SNP appearances (computed using snphap)
 ##' @return The value of gamma0
 ##' @author Mary Fortune
@@ -23,7 +23,7 @@ compute_gamma0<-function(N0,N1,W,gamma.CV,freq){
 ##' @param N0 number of samples with Y=0
 ##' @param N1 number of samples with Y=1
 ##' @param W The causal SNPs
-##' @param gamma.CV The odds ratios of effect for each CV
+##' @param gamma.CV The log odds ratios of effect for each CV
 ##' @param PWgY0 the distribution of causal snps in controls
 ##' @return The value of gamma0
 ##' @author Mary Fortune

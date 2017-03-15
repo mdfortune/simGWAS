@@ -10,7 +10,7 @@ Sys.setenv("PKG_LIBS"="-fopenmp")
 ##' @param N1	The number of Y=1
 ##' @param snps The snps at which we wish to compute the expected Z Score
 ##' @param W	The true causal SNPs (these need not be in "snps")
-##' @param gamma.CV	The odds ratios of effect of the true causal SNPs
+##' @param gamma.CV	The log odds ratios of effect of the true causal SNPs
 ##' @param freq Frequencies of SNP appearances (computed using snphap)
 ##' @return The expected Z Score for all snps in snps, assuming the causal SNPs are W
 ##' @author Mary Fortune
@@ -27,7 +27,7 @@ expected_z_score<-function(N0,N1,snps,W,gamma.CV,freq){
 ##' @param N1	The number of Y=1
 ##' @param snps The snps at which we wish to compute the expected Z Score
 ##' @param W	The true causal SNPs (these need not be in "snps")
-##' @param gamma.CV	The odds ratios of effect of the true causal SNPs
+##' @param gamma.CV	The log odds ratios of effect of the true causal SNPs
 ##' @param freq Frequencies of SNP appearances (computed using snphap)
 ##' @param df_control A reference set of control samples
 ##' @author Mary Fortune

@@ -63,7 +63,7 @@ est_statistic<-function(N0,N1,snps,W,gamma1,freq,GenoProbList){
     Ufactor<-N0*(N-1)*(N0*expeta-N1)/(N^2)
     powerfactor<-N0*(expeta+1)/N
     sapply(seq_along(snps), function(ii) {
-        fast_zscore(N0,N1,Ufactor,powerfactor,freq,GenoProbList[[ii]])
+        est_zscore(N0,N1,Ufactor,powerfactor,freq,GenoProbList[[ii]])
     })
 }
 
