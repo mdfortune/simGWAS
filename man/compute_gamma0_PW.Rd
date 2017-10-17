@@ -2,7 +2,7 @@
 % Please edit documentation in R/compute_gamma0.R
 \name{compute_gamma0_PW}
 \alias{compute_gamma0_PW}
-\title{Compute the value of gamma_0 from gamma1,...,gamma_m (when we know the distibution of W in the controls)}
+\title{Compute gamma0 given distribution of W}
 \usage{
 compute_gamma0_PW(N0, N1, W, gamma.CV, PWgY0)
 }
@@ -19,6 +19,12 @@ compute_gamma0_PW(N0, N1, W, gamma.CV, PWgY0)
 }
 \value{
 The value of gamma0
+}
+\description{
+Compute the value of gamma_0 from gamma1,...,gamma_m
+}
+\details{
+Note: assume we know the distibution of W in the controls
 }
 \author{
 Mary Fortune

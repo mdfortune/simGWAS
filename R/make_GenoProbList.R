@@ -14,12 +14,9 @@ which_X0_3SNP<-which(geno_3SNP[,1]==0)
 which_X1_3SNP<-which(geno_3SNP[,1]==1)
 which_X2_3SNP<-which(geno_3SNP[,1]==2)
 
-
-
-
-
-##' @title compute a list, GenoProbList, giving the GenoProb values for each X. 
-##' @export
+##' compute a list, GenoProbList, giving the GenoProb values for each X.
+##'
+##' @title make_GenoProbList
 ##' @param snps The snps at which we wish to compute the expected Z Score
 ##' @param W	The true causal SNPs (these need not be in "snps")
 ##' @param freq Frequencies of SNP appearances (computed using snphap)

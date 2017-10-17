@@ -1,4 +1,7 @@
-##' Estimates the expected Z Score for a single SNP, assuming the input CVs, and the relationship, gamma, between them and the trait of interest
+##' Estimates the expected Z Score for a single SNP
+##'
+##' Assumes the input CVs, and the relationship, gamma, between them and the trait of interest
+##'
 ##' Assumes we have already generated GenoProbXW for all X
 ##' @title estimate Z score at a single SNP
 ##' @export
@@ -34,8 +37,9 @@ find_PXaW_MK<-function(x,w,GenoProbXW){
 }
 
 
-#wrapper function to run est_zscore for all snps in snps
-#assumes we have a list, GenoProbList, giving the GenoProb values for each X. 
+##' Wrapper function to run est_zscore for all snps in snps
+##'
+##' Assumes we have a list, GenoProbList, giving the GenoProb values for each X. 
 ##' @title estimate Z score at a single SNP
 ##' @export
 ##' @param N0 The number of Y=0

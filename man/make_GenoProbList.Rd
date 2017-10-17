@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_GenoProbList.R
 \name{make_GenoProbList}
 \alias{make_GenoProbList}
-\title{compute a list, GenoProbList, giving the GenoProb values for each X.}
+\title{make_GenoProbList}
 \usage{
 make_GenoProbList(snps, W, freq)
 }
@@ -15,6 +15,9 @@ make_GenoProbList(snps, W, freq)
 }
 \value{
 The the GenoProb values for each X
+}
+\description{
+compute a list, GenoProbList, giving the GenoProb values for each X.
 }
 \author{
 Mary Fortune and Chris Wallace

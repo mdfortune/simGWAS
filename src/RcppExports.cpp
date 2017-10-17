@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // MatrixVector
 NumericVector MatrixVector(const NumericMatrix& matrix, const NumericVector& vector, const bool verbose);
-RcppExport SEXP simGWAS_MatrixVector(SEXP matrixSEXP, SEXP vectorSEXP, SEXP verboseSEXP) {
+RcppExport SEXP _simGWAS_MatrixVector(SEXP matrixSEXP, SEXP vectorSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -20,7 +20,7 @@ END_RCPP
 }
 // zscore
 double zscore(const double N0, const double N1, const NumericVector& Ufactor, const NumericVector& powerfactor, const NumericVector& PX1W, const NumericVector& PX2W);
-RcppExport SEXP simGWAS_zscore(SEXP N0SEXP, SEXP N1SEXP, SEXP UfactorSEXP, SEXP powerfactorSEXP, SEXP PX1WSEXP, SEXP PX2WSEXP) {
+RcppExport SEXP _simGWAS_zscore(SEXP N0SEXP, SEXP N1SEXP, SEXP UfactorSEXP, SEXP powerfactorSEXP, SEXP PX1WSEXP, SEXP PX2WSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -36,7 +36,7 @@ END_RCPP
 }
 // psum
 double psum(const NumericVector& x, const NumericVector& y);
-RcppExport SEXP simGWAS_psum(SEXP xSEXP, SEXP ySEXP) {
+RcppExport SEXP _simGWAS_psum(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -48,7 +48,7 @@ END_RCPP
 }
 // haplabs
 std::vector< std::string > haplabs(const int n);
-RcppExport SEXP simGWAS_haplabs(SEXP nSEXP) {
+RcppExport SEXP _simGWAS_haplabs(SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -59,7 +59,7 @@ END_RCPP
 }
 // happrobs
 NumericVector happrobs(const NumericMatrix& G, const NumericVector& P);
-RcppExport SEXP simGWAS_happrobs(SEXP GSEXP, SEXP PSEXP) {
+RcppExport SEXP _simGWAS_happrobs(SEXP GSEXP, SEXP PSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -71,7 +71,7 @@ END_RCPP
 }
 // meanC
 double meanC(NumericVector x);
-RcppExport SEXP simGWAS_meanC(SEXP xSEXP) {
+RcppExport SEXP _simGWAS_meanC(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -82,7 +82,7 @@ END_RCPP
 }
 // combinationRefs
 NumericMatrix combinationRefs(const IntegerMatrix& x, const IntegerMatrix& cols, const IntegerMatrix& reference, const NumericVector& prop, int shiftSize, int threads, bool verbose);
-RcppExport SEXP simGWAS_combinationRefs(SEXP xSEXP, SEXP colsSEXP, SEXP referenceSEXP, SEXP propSEXP, SEXP shiftSizeSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {
+RcppExport SEXP _simGWAS_combinationRefs(SEXP xSEXP, SEXP colsSEXP, SEXP referenceSEXP, SEXP propSEXP, SEXP shiftSizeSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -99,7 +99,7 @@ END_RCPP
 }
 // combination2
 IntegerMatrix combination2(IntegerMatrix x, IntegerMatrix cols);
-RcppExport SEXP simGWAS_combination2(SEXP xSEXP, SEXP colsSEXP) {
+RcppExport SEXP _simGWAS_combination2(SEXP xSEXP, SEXP colsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -111,7 +111,7 @@ END_RCPP
 }
 // wsumsq
 double wsumsq(const NumericVector& xx, const NumericVector& yy, const NumericVector& ww);
-RcppExport SEXP simGWAS_wsumsq(SEXP xxSEXP, SEXP yySEXP, SEXP wwSEXP) {
+RcppExport SEXP _simGWAS_wsumsq(SEXP xxSEXP, SEXP yySEXP, SEXP wwSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -121,4 +121,22 @@ BEGIN_RCPP
     rcpp_result_gen = Rcpp::wrap(wsumsq(xx, yy, ww));
     return rcpp_result_gen;
 END_RCPP
+}
+
+static const R_CallMethodDef CallEntries[] = {
+    {"_simGWAS_MatrixVector", (DL_FUNC) &_simGWAS_MatrixVector, 3},
+    {"_simGWAS_zscore", (DL_FUNC) &_simGWAS_zscore, 6},
+    {"_simGWAS_psum", (DL_FUNC) &_simGWAS_psum, 2},
+    {"_simGWAS_haplabs", (DL_FUNC) &_simGWAS_haplabs, 1},
+    {"_simGWAS_happrobs", (DL_FUNC) &_simGWAS_happrobs, 2},
+    {"_simGWAS_meanC", (DL_FUNC) &_simGWAS_meanC, 1},
+    {"_simGWAS_combinationRefs", (DL_FUNC) &_simGWAS_combinationRefs, 7},
+    {"_simGWAS_combination2", (DL_FUNC) &_simGWAS_combination2, 2},
+    {"_simGWAS_wsumsq", (DL_FUNC) &_simGWAS_wsumsq, 3},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_simGWAS(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }

@@ -1,4 +1,7 @@
-##' @title Compute the value of gamma_0 from gamma1,...,gamma_m (must compute the distibution of W in the controls)
+##' Compute the value of gamma_0 from gamma1,...,gamma_m
+##'
+##' Note: assume we must compute the distibution of W in the controls
+##' @title Compute gamma0, given haplotype frequencies
 ##' @param N0 number of samples with Y=0
 ##' @param N1 number of samples with Y=1
 ##' @param W The causal SNPs
@@ -19,7 +22,10 @@ compute_gamma0<-function(N0,N1,W,gamma.CV,freq){
 
 #for when we know PW
 
-##' @title Compute the value of gamma_0 from gamma1,...,gamma_m (when we know the distibution of W in the controls)
+##' Compute the value of gamma_0 from gamma1,...,gamma_m
+##'
+##' Note: assume we know the distibution of W in the controls
+##' @title Compute gamma0 given distribution of W
 ##' @param N0 number of samples with Y=0
 ##' @param N1 number of samples with Y=1
 ##' @param W The causal SNPs
