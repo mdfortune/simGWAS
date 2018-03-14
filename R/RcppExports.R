@@ -2,34 +2,38 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 MatrixVector <- function(matrix, vector, verbose = FALSE) {
-    .Call('simGWAS_MatrixVector', PACKAGE = 'simGWAS', matrix, vector, verbose)
+    .Call('_simGWAS_MatrixVector', PACKAGE = 'simGWAS', matrix, vector, verbose)
 }
 
 zscore <- function(N0, N1, Ufactor, powerfactor, PX1W, PX2W) {
-    .Call('simGWAS_zscore', PACKAGE = 'simGWAS', N0, N1, Ufactor, powerfactor, PX1W, PX2W)
+    .Call('_simGWAS_zscore', PACKAGE = 'simGWAS', N0, N1, Ufactor, powerfactor, PX1W, PX2W)
 }
 
 psum <- function(x, y) {
-    .Call('simGWAS_psum', PACKAGE = 'simGWAS', x, y)
+    .Call('_simGWAS_psum', PACKAGE = 'simGWAS', x, y)
 }
 
 haplabs <- function(n) {
-    .Call('simGWAS_haplabs', PACKAGE = 'simGWAS', n)
+    .Call('_simGWAS_haplabs', PACKAGE = 'simGWAS', n)
 }
 
 happrobs <- function(G, P) {
-    .Call('simGWAS_happrobs', PACKAGE = 'simGWAS', G, P)
+    .Call('_simGWAS_happrobs', PACKAGE = 'simGWAS', G, P)
+}
+
+meanC <- function(x) {
+    .Call('_simGWAS_meanC', PACKAGE = 'simGWAS', x)
 }
 
 combinationRefs <- function(x, cols, reference, prop, shiftSize = 2L, threads = -1L, verbose = FALSE) {
-    .Call('simGWAS_combinationRefs', PACKAGE = 'simGWAS', x, cols, reference, prop, shiftSize, threads, verbose)
+    .Call('_simGWAS_combinationRefs', PACKAGE = 'simGWAS', x, cols, reference, prop, shiftSize, threads, verbose)
 }
 
 combination2 <- function(x, cols) {
-    .Call('simGWAS_combination2', PACKAGE = 'simGWAS', x, cols)
+    .Call('_simGWAS_combination2', PACKAGE = 'simGWAS', x, cols)
 }
 
 wsumsq <- function(xx, yy, ww) {
-    .Call('simGWAS_wsumsq', PACKAGE = 'simGWAS', xx, yy, ww)
+    .Call('_simGWAS_wsumsq', PACKAGE = 'simGWAS', xx, yy, ww)
 }
 

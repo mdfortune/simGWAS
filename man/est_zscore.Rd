@@ -23,10 +23,13 @@ est_zscore(N0, N1, Ufactor, powerfactor, freq, GenoProbXW)
 The expected Z Score for SNP X, assuming the causal SNPs are W
 }
 \description{
-Estimates the expected Z Score for a single SNP, assuming the input CVs, and the relationship, gamma, between them and the trait of interest
+Estimates the expected Z Score for a single SNP
+}
+\details{
+Assumes the input CVs, and the relationship, gamma, between them and the trait of interest
+
 Assumes we have already generated GenoProbXW for all X
 }
 \author{
 Mary Fortune and Chris Wallace
 }
-

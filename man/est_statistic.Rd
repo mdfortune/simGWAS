@@ -24,7 +24,12 @@ est_statistic(N0, N1, snps, W, gamma1, freq, GenoProbList)
 \value{
 The expected Z Score for SNP X, assuming the causal SNPs are W
 }
+\description{
+Wrapper function to run est_zscore for all snps in snps
+}
+\details{
+Assumes we have a list, GenoProbList, giving the GenoProb values for each X.
+}
 \author{
 Mary Fortune and Chris Wallace
 }
-

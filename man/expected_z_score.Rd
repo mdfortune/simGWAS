@@ -25,4 +25,3 @@ The expected Z Score for all snps in snps, assuming the causal SNPs are W
 \author{
 Mary Fortune
 }
-

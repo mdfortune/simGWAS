@@ -12,4 +12,3 @@ which_genotypes(nsnps)
 \author{
 Mary Fortune
 }
-
