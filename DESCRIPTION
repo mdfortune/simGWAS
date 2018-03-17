@@ -1,7 +1,7 @@
 Package: simGWAS
 Type: Package
 Depends:
-        snpStats
+    snpStats
 biocViews: snpStats
 Title: Simulating the expected output from a GWAS with a given causal model
 Version: 3.2.3
@@ -21,15 +21,17 @@ Collate:
     'extractsnps.R'
     'make_dataset.R'
     'make_GenoProbList.R'
-	'RcppExports.R'
+    'RcppExports.R'
 LinkingTo: Rcpp
 Imports:
     Rcpp,
     dplyr,
     combinat,
     corpcor,
-    mvtnorm
-RoxygenNote: 6.0.1
-Suggests: knitr,
+    mvtnorm,
+    methods
+RoxygenNote: 5.0.1
+Suggests:
+    knitr,
     rmarkdown
 VignetteBuilder: knitr

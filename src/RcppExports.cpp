@@ -69,17 +69,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// meanC
-double meanC(NumericVector x);
-RcppExport SEXP _simGWAS_meanC(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(meanC(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 // combinationRefs
 NumericMatrix combinationRefs(const IntegerMatrix& x, const IntegerMatrix& cols, const IntegerMatrix& reference, const NumericVector& prop, int shiftSize, int threads, bool verbose);
 RcppExport SEXP _simGWAS_combinationRefs(SEXP xSEXP, SEXP colsSEXP, SEXP referenceSEXP, SEXP propSEXP, SEXP shiftSizeSEXP, SEXP threadsSEXP, SEXP verboseSEXP) {
@@ -129,7 +118,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_simGWAS_psum", (DL_FUNC) &_simGWAS_psum, 2},
     {"_simGWAS_haplabs", (DL_FUNC) &_simGWAS_haplabs, 1},
     {"_simGWAS_happrobs", (DL_FUNC) &_simGWAS_happrobs, 2},
-    {"_simGWAS_meanC", (DL_FUNC) &_simGWAS_meanC, 1},
     {"_simGWAS_combinationRefs", (DL_FUNC) &_simGWAS_combinationRefs, 7},
     {"_simGWAS_combination2", (DL_FUNC) &_simGWAS_combination2, 2},
     {"_simGWAS_wsumsq", (DL_FUNC) &_simGWAS_wsumsq, 3},

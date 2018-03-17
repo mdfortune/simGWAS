@@ -15,7 +15,7 @@ simulated_z_score(N0, N1, snps, W, gamma.CV, freq, df_control)
 
 \item{W}{The true causal SNPs (these need not be in "snps")}
 
-\item{gamma.CV}{The odds ratios of effect of the true causal SNPs}
+\item{gamma.CV}{The log odds ratios of effect of the true causal SNPs}
 
 \item{freq}{Frequencies of SNP appearances (computed using snphap)}
 
@@ -24,3 +24,4 @@ simulated_z_score(N0, N1, snps, W, gamma.CV, freq, df_control)
 \author{
 Mary Fortune
 }
+

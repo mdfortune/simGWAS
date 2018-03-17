@@ -21,10 +21,6 @@ happrobs <- function(G, P) {
     .Call('_simGWAS_happrobs', PACKAGE = 'simGWAS', G, P)
 }
 
-meanC <- function(x) {
-    .Call('_simGWAS_meanC', PACKAGE = 'simGWAS', x)
-}
-
 combinationRefs <- function(x, cols, reference, prop, shiftSize = 2L, threads = -1L, verbose = FALSE) {
     .Call('_simGWAS_combinationRefs', PACKAGE = 'simGWAS', x, cols, reference, prop, shiftSize, threads, verbose)
 }

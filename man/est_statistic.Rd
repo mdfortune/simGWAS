@@ -15,7 +15,7 @@ est_statistic(N0, N1, snps, W, gamma1, freq, GenoProbList)
 
 \item{W}{The true causal SNPs (these need not be in "snps")}
 
-\item{gamma1}{The odds ratios of effect of the true causal SNPs (not including gamma0, the intercept term)}
+\item{gamma1}{The log odds ratios of effect of the true causal SNPs (not including gamma0, the intercept term)}
 
 \item{freq}{Frequencies of SNP appearances (computed using snphap)}
 
@@ -33,3 +33,4 @@ Assumes we have a list, GenoProbList, giving the GenoProb values for each X.
 \author{
 Mary Fortune and Chris Wallace
 }
+

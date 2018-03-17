@@ -13,7 +13,7 @@ compute_gamma0_PW(N0, N1, W, gamma.CV, PWgY0)
 
 \item{W}{The causal SNPs}
 
-\item{gamma.CV}{The odds ratios of effect for each CV}
+\item{gamma.CV}{The log odds ratios of effect for each CV}
 
 \item{PWgY0}{the distribution of causal snps in controls}
 }
@@ -29,3 +29,4 @@ Note: assume we know the distibution of W in the controls
 \author{
 Mary Fortune
 }
+

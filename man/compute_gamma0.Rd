@@ -13,7 +13,7 @@ compute_gamma0(N0, N1, W, gamma.CV, freq)
 
 \item{W}{The causal SNPs}
 
-\item{gamma.CV}{The odds ratios of effect for each CV}
+\item{gamma.CV}{The log odds ratios of effect for each CV}
 
 \item{freq}{Frequencies of SNP appearances (computed using snphap)}
 }
@@ -29,3 +29,4 @@ Note: assume we must compute the distibution of W in the controls
 \author{
 Mary Fortune
 }
+

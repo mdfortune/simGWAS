@@ -22,3 +22,4 @@ compute a list, GenoProbList, giving the GenoProb values for each X.
 \author{
 Mary Fortune and Chris Wallace
 }
+

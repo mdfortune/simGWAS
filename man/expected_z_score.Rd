@@ -15,7 +15,7 @@ expected_z_score(N0, N1, snps, W, gamma.CV, freq)
 
 \item{W}{The true causal SNPs (these need not be in "snps")}
 
-\item{gamma.CV}{The odds ratios of effect of the true causal SNPs}
+\item{gamma.CV}{The log odds ratios of effect of the true causal SNPs}
 
 \item{freq}{Frequencies of SNP appearances (computed using snphap)}
 }
@@ -25,3 +25,4 @@ The expected Z Score for all snps in snps, assuming the causal SNPs are W
 \author{
 Mary Fortune
 }
+
