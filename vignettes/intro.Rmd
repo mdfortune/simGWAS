@@ -23,7 +23,7 @@ Load the library
 library(simGWAS)
 ```
 
-simGWAS needs some reference haplotype frequencies from control subjcets.  These can be found by taking phased haplotypes from public data sources, or by phasing genotype data you may already have, for example using [snphap](https://github.com/chr1swallace/snphap).
+simGWAS needs some reference haplotype frequencies from control subjects.  These can be found by taking phased haplotypes from public data sources, or by phasing genotype data you may already have, for example using [snphap](https://github.com/chr1swallace/snphap).
 
 For the purpose of this vignette, we will simulate some reference haplotypes.  The final format is a `data.frame` with n columns of 0s and 1s indicating alleles at each of n SNPs, and collections of alleles in a row being a haplotype.  A final column, named "Probability", contains the fractional frequency of each haplotype.  Note that haplotypes need not be unique, you can have one row per haplotype in a sample, and Probability set to 1/[number of haplotypes] = 1/(2*[number of samples]).  The object we are creating will be called `freq`.
 
